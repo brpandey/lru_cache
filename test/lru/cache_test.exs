@@ -29,6 +29,14 @@ defmodule LRU.Cache.Test do
 
     end
 
+    test "nil key" do
+      
+      cache = LRU.Cache.new(2)
+
+      assert catch_error(LRU.Cache.put(cache, nil, 3)) == :function_clause
+
+    end
+
     test "correct insert and retrieval" do
       
       cache = LRU.Cache.new(@max_size) 

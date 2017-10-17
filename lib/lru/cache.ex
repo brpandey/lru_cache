@@ -66,7 +66,7 @@ defmodule LRU.Cache do
   Put key-value pair into cache.  
   If key already exists, update only if value is different
   """
-  def put(%LRU.Cache{} = cache, key, value) do
+  def put(%LRU.Cache{} = cache, key, value) when not(is_nil(key)) do
     # Insert key-value pair -- checking if key already found
 
     case Map.has_key?(cache.value_by_key, key) do
