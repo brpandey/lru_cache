@@ -35,7 +35,7 @@ defmodule LRU.Cache do
 
 
   @doc "Create a new cache given maximum number of entries"
-  def new(size) do
+  def new(size) when is_integer(size) and size > 0 do
     %LRU.Cache{max_size: size}
   end
 

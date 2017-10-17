@@ -22,10 +22,21 @@ defmodule LRU.Cache.Test do
 
   describe "general cache operations not full and proper lru updates" do
 
+
+    test "incorrect size" do
+      
+      assert catch_error(LRU.Cache.new(-2)) == :function_clause
+
+    end
+
     test "correct insert and retrieval" do
       
+      cache = LRU.Cache.new(@max_size) 
+
+      assert 0 = cache.size
+
       {@value1, _c} = 
-        LRU.Cache.new(@max_size) 
+        cache
         |> LRU.Cache.put(@key1, @value1) 
         |> LRU.Cache.get(@key1)
 
